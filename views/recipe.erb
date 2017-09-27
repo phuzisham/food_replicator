@@ -1,0 +1,65 @@
+<div class="row">
+  <div class="col-sm-6">
+    <div class="card">
+      <h3> Update the <%=@recipe.title() %> recipe:</h3>
+      <h4><%= @recipe.instructions() %></h4>
+
+      <form action="/recipe/<%= @recipe.id() %>" method="post">
+        <div class="form-group">
+          <label for="ingredients" class="form-label">Recipe Ingredients:</label>
+          <input type="text" name="ingredients" class"form-control" id="ingredients" autofocus>
+          <button type="submit" class="button btn">Add Ingredients</button>
+        </div>
+      </form>
+      <br>
+      <form action="/recipe_title/<%= @recipe.id() %>" method="post">
+        <div class="form-group">
+          <input type="hidden" name="_method" value="patch">
+
+          <label for="title">Rename your recipe:</label>
+          <input type="text" name="title" id="title">
+
+          <button type="submit" class="button btn">Update Recipe</button>
+        </div>
+      </form>
+      <br>
+      <form action="/recipe_instructions/<%= @recipe.id() %>" method="post">
+        <div class="form-group">
+          <input type="hidden" name="_method" value="patch">
+
+          <label for="instructions">Update your instructions:</label>
+          <input type="text" name="instructions" id="instructions">
+
+          <button type="submit" class="button btn">Update Instructions</button>
+        </div>
+      </form>
+      <br>
+      <form action="/recipe/<%= @recipe.id() %>" method="post">
+        <div class="form-group">
+          <input name="_method" type="hidden" value="delete">
+          <label for="delete">Delete your recipe:</label>
+          <button type="submit" class="button btn btn-danger">Delete Recipe</button>
+        </div>
+      </form>
+      <a href="/"><button class="btn">Return To Homepage</a>
+    </div>
+  </div>
+  <div class="col-sm-6">
+    <div class="card">
+      <h1><%= @recipe.title() %></h1>
+
+      <% if @recipe.ingredients().any?() %>
+        <h3>Here are all the ingredients in this recipe:</h3>
+
+        <ul>
+          <% @recipe.ingredients().each() do |ingredient| %>
+            <li><%= ingredient.title() %></li>
+          <% end %>
+        </ul>
+
+        <% else %>
+          <p>There are no ingredients for this recipe yet!</p>
+      <% end %>
+    </div>
+  </div>
+</div>

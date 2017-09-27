@@ -1,0 +1,41 @@
+<div class="row">
+  <div class="col-sm-6">
+    <div class="card">
+      <h3>Add New Ingredient</h3>
+
+      <form action="/create_ingredient" method="post">
+        <div class="form-group">
+          <label for="title" class="form-label">Name your ingredient:</label>
+          <input type="text" name="title" class="form-control" id="title" autofocus>
+          <button type="submit" class="button btn">Add Ingredient</button>
+        </div>
+      </form>
+    </div>
+  </div>
+  <div class="col-sm-6">
+    <div class="card">
+      <% if @ingredients.any?() %>
+      <h3>Here are your ingredients:</h3>
+
+      <form action="" method="post">
+      <input type="hidden" name="_method" value="patch">
+      <% @ingredients.each() do |ingredient| %>
+        <div class="checkbox">
+          <label>
+            <input type="checkbox" name="ingredient_ids[]" value="<%= ingredient.id() %>"><%= ingredient.title() %>
+          </label>
+        </div>
+      <% end %>
+
+        <button type="submit">Add employees</button>
+      </form>
+
+    <% else %>
+
+        <p>There are no ingredients yet!</p>
+
+    <% end %>
+    <a href="/"><button class="btn">Return To Homepage</a>
+    </div>
+  </div>
+</div>

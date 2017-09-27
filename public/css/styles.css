@@ -1,0 +1,9 @@
+body {
+  font-family: 'Arvo', serif;
+  background-color: slateblue;
+  color: #123;
+}
+
+.card {
+  padding: 20px;
+}

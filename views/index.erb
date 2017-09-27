@@ -1,0 +1,68 @@
+<div class="row">
+  <div class="col-sm-4">
+    <div class="card">
+      <a href="/add_recipe">Add a recipe to the box!</a>
+    </div>
+    <br>
+    <div class="card">
+      <% if @recipes.any?() %>
+      <h3>Here are your recipes:</h3>
+
+      <ul>
+        <% @recipes.each() do |recipe| %>
+          <li><a href="/recipe/<%= recipe.id() %>"><%= recipe.title() %></a> </li>
+        <% end %>
+      </ul>
+
+    <% else %>
+
+        <p>There are no recipes yet!</p>
+
+    <% end %>
+    </div>
+  </div>
+  <div class="col-sm-4">
+    <div class="card">
+      <a href="/add_ingredient">Add an ingredient to the box!</a>
+    </div>
+    <br>
+    <div class="card">
+      <% if @ingredients.any?() %>
+      <h3>Here are your Ingredients:</h3>
+
+      <ul>
+        <% @ingredients.each() do |ingredient| %>
+          <li><a href="/ingredient/<%= ingredient.id() %>"><%= ingredient.title() %></a> </li>
+        <% end %>
+      </ul>
+
+    <% else %>
+
+        <p>There are no Ingredients yet!</p>
+
+    <% end %>
+    </div>
+  </div>
+  <div class="col-sm-4">
+    <div class="card">
+      <a href="/add_tag">Add a tag to the box!</a>
+    </div>
+    <br>
+    <div class="card">
+      <% if @tags.any?() %>
+      <h3>Here are your tags:</h3>
+
+      <ul>
+        <% @tags.each() do |tag| %>
+          <li><a href="/tag/<%= tag.id() %>"><%= tag.title() %></a> </li>
+        <% end %>
+      </ul>
+
+    <% else %>
+
+        <p>There are no tags yet!</p>
+
+    <% end %>
+    </div>
+  </div>
+</div>
