@@ -4,7 +4,6 @@ class Ingredient < ActiveRecord::Base
   validates(:title, {:presence => true, :length => {:maximum => 40}})
   validates(:title, uniqueness: { case_sensitive: false })
   before_save(:upcase_title)
-  before_save(:already_exists)
 
   private
 
@@ -14,9 +13,5 @@ class Ingredient < ActiveRecord::Base
       t.capitalize!
     end
     self.title = array.join(' ')
-  end
-
-  def already_exists
-
   end
 end

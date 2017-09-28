@@ -27,6 +27,8 @@ end
 
 get("/recipe/:id") do
   @recipe = Recipe.find(params["id"])
+  @ingredients = Ingredient.all()
+  @tags = Tag.all()
   erb(:recipe)
 end
 
@@ -62,16 +64,22 @@ post('/create_tag') do
 end
 
 post("/recipe/:id") do
+  @tags = Tag.all()
+  @ingredients = Ingredient.all()
   @recipe = Recipe.find(params["id"])
   title = params['ingredients']
   new_ingredient = Ingredient.create({:title => title})
-  @recipe.ingredients.push(new_ingredient)
-  erb(:recipe)
+  if new_ingredient.save()
+    @recipe.ingredients.push(new_ingredient)
+    erb(:recipe)
+  else
+    redirect('/ingredient_error')
+  end
 end
 
 post("/search_recipe") do
-  search_query = params['search'].capitalize
-  @recipe = Recipe.where(:title => search_query).first
+  search_query = params['search']
+  @recipe = Recipe.where("title ILIKE (?)", "%#{search_query}%").first
   if @recipe
     id = @recipe.id
     redirect("/recipe/#{id}")
@@ -81,6 +89,8 @@ post("/search_recipe") do
 end
 
 patch('/recipe_title/:id') do
+  @tags = Tag.all()
+  @ingredients = Ingredient.all()
   @recipe = Recipe.find(params["id"])
   title = params['title']
   @recipe.update({:title => title})
@@ -88,10 +98,22 @@ patch('/recipe_title/:id') do
 end
 
 patch('/recipe_instructions/:id') do
+  @tags = Tag.all()
+  @ingredients = Ingredient.all()
   @recipe = Recipe.find(params["id"])
   instructions = params['instructions']
   @recipe.update({:instructions => instructions})
   erb(:recipe)
+end
+
+patch('/add_ingredient/:id') do
+  @recipe = Recipe.find(params['id'])
+  ingredient_ids = params.fetch('ingredient_ids')
+  ingredient_ids.each do |i|
+    ingredient = Ingredient.find(i)
+    @recipe.ingredients.push(ingredient)
+  end
+  redirect("/recipe/#{@recipe.id}")
 end
 
 delete("/recipe/:id") do

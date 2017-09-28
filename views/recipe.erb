@@ -1,8 +1,63 @@
 <div class="row">
-  <div class="col-sm-6">
+  <div class="col-sm-4">
+    <div class="card">
+      <h1><%= @recipe.title() %></h1>
+      <h3>Instructions:</h3>
+      <%= @recipe.instructions %>
+    </div>
+  </div>
+    <br>
+  <div class='col-sm-4'>
+    <div class="card">
+      <h3>Ingredients:</h3>
+
+      <% if @recipe.ingredients().any?() %>
+        <h3>Here are all the ingredients in this recipe:</h3>
+
+        <ul>
+          <% @recipe.ingredients().each() do |ingredient| %>
+            <li><%= ingredient.title() %></li>
+          <% end %>
+        </ul>
+
+        <% else %>
+          <p>There are no ingredients for this recipe yet!</p>
+      <% end %>
+    </div>
+  </div>
+
+  <div class="col-sm-4">
+    <div class="card">
+      <% if @ingredients.any?() %>
+      <h3>Add these ingredients:</h3>
+
+      <form action="/add_ingredient/<%= @recipe.id() %>" method="post">
+      <input type="hidden" name="_method" value="patch">
+      <% @ingredients.each() do |ingredient| %>
+        <div class="checkbox">
+          <label>
+            <input type="checkbox" name="ingredient_ids[]" value="<%= ingredient.id() %>"> <%= ingredient.title() %>
+          </label>
+        </div>
+      <% end %>
+
+        <button class="btn btn-success" type="submit">Add Ingredients</button>
+      </form>
+
+    <% else %>
+
+        <p>There are no ingredients yet!</p>
+
+    <% end %>
+
+    </div>
+  </div>
+</div>
+<div class="row">
+  <div class="col-sm-4">
+    <br>
     <div class="card">
       <h3> Add ingredients or update instructions:</h3>
-      <h4><%= @recipe.instructions() %></h4>
 
       <form action="/recipe/<%= @recipe.id() %>" method="post">
         <div class="form-group">
@@ -24,6 +79,10 @@
       </form>
       <br>
     </div>
+    <br>
+
+  </div>
+  <div class="col-sm-4">
     <br>
     <div class="card">
       <h3>Rename or delete recipe:</h3>
@@ -51,28 +110,32 @@
       <a href="/"><button class="btn home">Return To Homepage</a>
     </div>
   </div>
-  <div class="col-sm-6">
-    <div class="card">
-      <h1><%= @recipe.title() %></h1>
-      <h3>Instructions:</h3>
-      <%= @recipe.instructions %>
-    </div>
+  <div class="col-sm-4">
     <br>
     <div class="card">
-      <h3>Ingredients:</h3>
+      <% if @tags.any?() %>
+      <h3>Add these tags:</h3>
 
-      <% if @recipe.ingredients().any?() %>
-        <h3>Here are all the ingredients in this recipe:</h3>
-
-        <ul>
-          <% @recipe.ingredients().each() do |ingredient| %>
-            <li><%= ingredient.title() %></li>
-          <% end %>
-        </ul>
-
-        <% else %>
-          <p>There are no ingredients for this recipe yet!</p>
+      <form action="/add_tag" method="post">
+      <input type="hidden" name="_method" value="patch">
+      <% @tags.each() do |tag| %>
+        <div class="checkbox">
+          <label>
+            <input type="checkbox" name="tag_ids[]" value="<%= tag.id() %>"> <%= tag.title() %>
+          </label>
+        </div>
       <% end %>
+
+        <button type="submit" class ="btn btn-success">Add Tags</button>
+      </form>
+
+    <% else %>
+
+        <p>There are no tags yet!</p>
+
+    <% end %>
+
     </div>
+
   </div>
 </div>
