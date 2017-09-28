@@ -35,3 +35,25 @@ input[type='text'], textarea {
 .home {
   background-color: #46518D;
 }
+
+.btn-danger {
+  background-color: #a82626;
+  border-color: #a82626;
+  color: #F0CCD4;
+}
+
+.btn-success {
+  background-color: #336d36;
+  border-color: #336d36;
+  color: #F0CCD4;
+}
+
+.btn-warning {
+  background-color: #aa8b36;
+  border-color: #aa8b36;
+  color: #F0CCD4;
+}
+
+#kirk {
+  text-align: center;
+}

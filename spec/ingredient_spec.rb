@@ -6,4 +6,9 @@ describe(Ingredient) do
     ingredient = Ingredient.new({:title => "a".*(41)})
     expect(ingredient.save()).to(eq(false))
   end
+  it("ensures that title doesn't already exist") do
+    Ingredient.create({:title => 'Tacos'})
+    ingredient = Ingredient.new({:title => 'tacos'})
+    expect(ingredient.save()).to(eq(false))
+  end
 end

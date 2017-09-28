@@ -2,6 +2,7 @@ class Tag < ActiveRecord::Base
   has_many :entries
   has_many :recipes, through: :entries
   validates(:title, {:presence => true, :length => {:maximum => 40}})
+  validates(:title, uniqueness: { case_sensitive: false })
   before_save(:upcase_title)
 
   private

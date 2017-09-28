@@ -3,6 +3,7 @@ class Recipe < ActiveRecord::Base
   has_many :ingredients, through: :entries
   has_many :tags, through: :entries
   validates(:title, {:presence => true, :length => {:maximum => 40}})
+  validates(:title, uniqueness: { case_sensitive: false })
   before_save(:upcase_title)
 
   private

@@ -57,7 +57,7 @@ post('/create_tag') do
   if @tag.save()
     redirect('/add_tag')
   else
-    erb(:tag_error)  
+    erb(:tag_error)
   end
 end
 
@@ -67,6 +67,17 @@ post("/recipe/:id") do
   new_ingredient = Ingredient.create({:title => title})
   @recipe.ingredients.push(new_ingredient)
   erb(:recipe)
+end
+
+post("/search_recipe") do
+  search_query = params['search'].capitalize
+  @recipe = Recipe.where(:title => search_query).first
+  if @recipe
+    id = @recipe.id
+    redirect("/recipe/#{id}")
+  else
+    erb(:search_fail)
+  end
 end
 
 patch('/recipe_title/:id') do
