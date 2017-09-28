@@ -1,9 +1,37 @@
+@font-face {
+  font-family: frontier;
+  src: url('Final_Frontier.ttf');
+}
+
 body {
-  font-family: 'Arvo', serif;
-  background-color: slateblue;
-  color: #123;
+  font-family: frontier;
+  background-image: url('/img/space_stars.jpg');
+  color: #0E171C;
+}
+
+.jumbotron {
+  background-color: #987F90;
+  color: #0E171C;
+}
+
+.jumbotron h1 {
+  font-size: 80px;
 }
 
 .card {
   padding: 20px;
+  background-color: #7f627a;
+}
+
+a {
+  color: #F0CCD4;
+}
+
+input[type='text'], textarea {
+  color: #F0CCD4;
+  background-color: #987F90;
+  border-style: none;
+}
+.home {
+  background-color: #46518D;
 }

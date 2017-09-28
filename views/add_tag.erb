@@ -1,0 +1,46 @@
+<div class="row">
+  <div class="col-sm-6">
+    <div class="card">
+      <h3>Add New Tag</h3>
+
+      <form action="/create_tag" method="post">
+        <div class="form-group">
+          <label for="title" class="form-label">Name your tag:</label>
+          <input type="text" name="title" class="form-control" id="title" required>
+          <br>
+          <button type="submit" class="btn btn-success">Add Tag</button>
+        </div>
+      </form>
+    </div>
+  </div>
+  <div class="col-sm-6">
+    <div class="card">
+      <% if @tags.any?() %>
+      <h3>Here are your tags:</h3>
+
+      <form action="/delete_tag" method="post">
+      <input type="hidden" name="_method" value="delete">
+      <% @tags.each() do |tag| %>
+        <div class="checkbox">
+          <label>
+            <input type="checkbox" name="tag_ids[]" value="<%= tag.id() %>"> <%= tag.title() %>
+          </label>
+        </div>
+      <% end %>
+
+        <button type="submit">Delete Selected Tags</button>
+      </form>
+
+    <% else %>
+
+        <p>There are no tags yet!</p>
+
+    <% end %>
+
+    </div>
+    <br>
+    <div class="card">
+      <a href="/"><button class="btn home">Return To Homepage</a>
+    </div>
+  </div>
+</div>

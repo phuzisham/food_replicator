@@ -9,7 +9,8 @@
           <input type="text" name="title" class="form-control" id="title" required>
           <label for="instructions" class="form-label">Add instructions for your recipe:</label>
           <input type="text" name="instructions" class="form-control" id="instructions" required>
-          <button type="submit" class="button btn">Add Recipe</button>
+          <br>
+          <button type="submit" class="btn btn-success">Add Recipe</button>
         </div>
       </form>
     </div>
@@ -19,18 +20,28 @@
       <% if @recipes.any?() %>
       <h3>Here are your recipes:</h3>
 
-      <ul>
-        <% @recipes.each() do |recipe| %>
-          <li><a href="/recipe/<%= recipe.id() %>"><%= recipe.title() %></a> </li>
-        <% end %>
-      </ul>
+      <form action="/delete_recipe" method="post">
+      <input type="hidden" name="_method" value="delete">
+      <% @recipes.each() do |recipe| %>
+        <div class="checkbox">
+          <label>
+            <input type="checkbox" name="recipe_ids[]" value="<%= recipe.id() %>"> <a href= "recipe/<%= recipe.id %>"><%= recipe.title() %></a>
+          </label>
+        </div>
+      <% end %>
+
+        <button type="submit" class="btn btn-danger">Delete Selected Recipes</button>
+      </form>
 
     <% else %>
 
         <p>There are no recipes yet!</p>
 
     <% end %>
-    <a href="/"><button class="btn">Return To Homepage</a>
+    </div>
+    <br>
+    <div class="card">
+      <a href="/"><button class="btn home">Return To Homepage</a>
     </div>
   </div>
 </div>

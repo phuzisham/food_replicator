@@ -1,25 +1,14 @@
 <div class="row">
   <div class="col-sm-6">
     <div class="card">
-      <h3> Update the <%=@recipe.title() %> recipe:</h3>
+      <h3> Add ingredients or update instructions:</h3>
       <h4><%= @recipe.instructions() %></h4>
 
       <form action="/recipe/<%= @recipe.id() %>" method="post">
         <div class="form-group">
-          <label for="ingredients" class="form-label">Recipe Ingredients:</label>
-          <input type="text" name="ingredients" class"form-control" id="ingredients" autofocus>
-          <button type="submit" class="button btn">Add Ingredients</button>
-        </div>
-      </form>
-      <br>
-      <form action="/recipe_title/<%= @recipe.id() %>" method="post">
-        <div class="form-group">
-          <input type="hidden" name="_method" value="patch">
-
-          <label for="title">Rename your recipe:</label>
-          <input type="text" name="title" id="title">
-
-          <button type="submit" class="button btn">Update Recipe</button>
+          <label for="ingredients" class="form-label">Ingredients:</label>
+          <input type="text" name="ingredients" class"form-control" id="ingredients" required>
+          <button type="submit" class="btn btn-success">Add Ingredients</button>
         </div>
       </form>
       <br>
@@ -27,10 +16,25 @@
         <div class="form-group">
           <input type="hidden" name="_method" value="patch">
 
-          <label for="instructions">Update your instructions:</label>
-          <input type="text" name="instructions" id="instructions">
+          <label for="instructions">Instructions:</label>
+          <input type="text" name="instructions" id="instructions" required>
 
-          <button type="submit" class="button btn">Update Instructions</button>
+          <button type="submit" class="btn btn-warning">Update Instructions</button>
+        </div>
+      </form>
+      <br>
+    </div>
+    <br>
+    <div class="card">
+      <h3>Rename or delete recipe:</h3>
+      <form action="/recipe_title/<%= @recipe.id() %>" method="post">
+        <div class="form-group">
+          <input type="hidden" name="_method" value="patch">
+
+          <label for="title">Rename your recipe:</label>
+          <input type="text" name="title" id="title" required>
+
+          <button type="submit" class="btn btn-warning">Update Recipe</button>
         </div>
       </form>
       <br>
@@ -38,15 +42,24 @@
         <div class="form-group">
           <input name="_method" type="hidden" value="delete">
           <label for="delete">Delete your recipe:</label>
-          <button type="submit" class="button btn btn-danger">Delete Recipe</button>
+          <button type="submit" class="btn btn-danger">Delete Recipe</button>
         </div>
       </form>
-      <a href="/"><button class="btn">Return To Homepage</a>
+    </div>
+    <br>
+    <div class="card">
+      <a href="/"><button class="btn home">Return To Homepage</a>
     </div>
   </div>
   <div class="col-sm-6">
     <div class="card">
       <h1><%= @recipe.title() %></h1>
+      <h3>Instructions:</h3>
+      <%= @recipe.instructions %>
+    </div>
+    <br>
+    <div class="card">
+      <h3>Ingredients:</h3>
 
       <% if @recipe.ingredients().any?() %>
         <h3>Here are all the ingredients in this recipe:</h3>

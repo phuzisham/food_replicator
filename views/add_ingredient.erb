@@ -5,9 +5,10 @@
 
       <form action="/create_ingredient" method="post">
         <div class="form-group">
-          <label for="title" class="form-label">Name your ingredient:</label>
+          <label for="title" class="form-label">Ingredient:</label>
           <input type="text" name="title" class="form-control" id="title" autofocus>
-          <button type="submit" class="button btn">Add Ingredient</button>
+          <br>
+          <button type="submit" class="btn btn-success">Add Ingredient</button>
         </div>
       </form>
     </div>
@@ -17,17 +18,17 @@
       <% if @ingredients.any?() %>
       <h3>Here are your ingredients:</h3>
 
-      <form action="" method="post">
-      <input type="hidden" name="_method" value="patch">
+      <form action="/delete_ingredient" method="post">
+      <input type="hidden" name="_method" value="delete">
       <% @ingredients.each() do |ingredient| %>
         <div class="checkbox">
           <label>
-            <input type="checkbox" name="ingredient_ids[]" value="<%= ingredient.id() %>"><%= ingredient.title() %>
+            <input type="checkbox" name="ingredient_ids[]" value="<%= ingredient.id() %>"> <%= ingredient.title() %>
           </label>
         </div>
       <% end %>
 
-        <button type="submit">Add employees</button>
+        <button class="btn btn-danger" type="submit">Delete Selected Ingredients</button>
       </form>
 
     <% else %>
@@ -35,7 +36,11 @@
         <p>There are no ingredients yet!</p>
 
     <% end %>
-    <a href="/"><button class="btn">Return To Homepage</a>
+
+    </div>
+    <br>
+    <div class="card">
+      <a href="/"><button class="btn home">Return To Homepage</a>
     </div>
   </div>
 </div>

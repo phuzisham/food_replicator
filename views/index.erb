@@ -32,7 +32,7 @@
 
       <ul>
         <% @ingredients.each() do |ingredient| %>
-          <li><a href="/ingredient/<%= ingredient.id() %>"><%= ingredient.title() %></a> </li>
+          <li><%= ingredient.title() %></li>
         <% end %>
       </ul>
 
@@ -54,7 +54,7 @@
 
       <ul>
         <% @tags.each() do |tag| %>
-          <li><a href="/tag/<%= tag.id() %>"><%= tag.title() %></a> </li>
+          <li><%= tag.title() %> </li>
         <% end %>
       </ul>
 
