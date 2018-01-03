@@ -13,6 +13,15 @@ _Users can add or search for recipes. Variety of fun error pages included._
 
 ![Screenshot](https://github.com/phuzisham/recipe_box/blob/master/img/cap.png "Screen Capture")
 
+
+![Screenshot](https://github.com/phuzisham/recipe_box/blob/master/img/cap2.png "Screen Capture")
+
+
+![Screenshot](https://github.com/phuzisham/recipe_box/blob/master/img/cap3.png "Screen Capture")
+
+
+![Screenshot](https://github.com/phuzisham/recipe_box/blob/master/img/cap4.png "Screen Capture")
+
 ### License
 
 *MIT License*
