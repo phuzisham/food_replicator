@@ -1,4 +1,4 @@
-# _Recipe Box_
+# _Food Replicator_
 
 #### _App that allows users to store recipes and search by tag or ingredient._
 
@@ -11,16 +11,16 @@
 
 _Users can add or search for recipes. Variety of fun error pages included._
 
-![Screenshot](https://github.com/phuzisham/recipe_box/blob/master/img/cap.png "Screen Capture")
+![Screenshot](https://github.com/phuzisham/food_replicator/blob/master/img/cap.png "Screen Capture")
 
 
-![Screenshot](https://github.com/phuzisham/recipe_box/blob/master/img/cap2.png "Screen Capture")
+![Screenshot](https://github.com/phuzisham/food_replicator/blob/master/img/cap2.png "Screen Capture")
 
 
-![Screenshot](https://github.com/phuzisham/recipe_box/blob/master/img/cap3.png "Screen Capture")
+![Screenshot](https://github.com/phuzisham/food_replicator/blob/master/img/cap3.png "Screen Capture")
 
 
-![Screenshot](https://github.com/phuzisham/recipe_box/blob/master/img/cap4.png "Screen Capture")
+![Screenshot](https://github.com/phuzisham/food_replicator/blob/master/img/cap4.png "Screen Capture")
 
 ### License
 
